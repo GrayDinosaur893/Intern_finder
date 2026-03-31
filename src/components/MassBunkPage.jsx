@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { extractCollege } from '../utils/detectCollege';
 import { getCollegeCount } from '../utils/collegeTracker';
+import { saveUserResponse, hasUserResponded, getUserResponse } from '../App';
 
 const AGREED_COUNT_KEY = 'massbunk_agreed_count';
 const AGREED_USERS_KEY = 'massbunk_agreed_users';
@@ -10,19 +11,24 @@ function MassBunkPage({ user, collegeCount, onYes, onNo }) {
   const [showWarning, setShowWarning] = useState(false);
   const [agreedCount, setAgreedCount] = useState(0);
   const [hasAgreed, setHasAgreed] = useState(false);
+  const [userUID, setUserUID] = useState(null);
   const containerRef = useRef(null);
 
   useEffect(() => {
     setAnimating(true);
+    
+    // Generate UID from email
+    const uid = user?.['Email Address']?.toLowerCase().trim();
+    setUserUID(uid);
+    
     // Load agreed count
     const stored = localStorage.getItem(AGREED_COUNT_KEY);
     setAgreedCount(stored ? parseInt(stored) : 0);
     
-    // Check if current user has already agreed
-    const userId = user?.['Email Address']?.toLowerCase().trim();
-    if (userId) {
-      const agreedUsers = JSON.parse(localStorage.getItem(AGREED_USERS_KEY) || '[]');
-      setHasAgreed(agreedUsers.includes(userId));
+    // Check if current user has already responded using UID system
+    if (uid) {
+      const hasResponded = hasUserResponded(uid);
+      setHasAgreed(hasResponded);
     }
   }, [user]);
 
@@ -52,21 +58,26 @@ function MassBunkPage({ user, collegeCount, onYes, onNo }) {
   };
 
   const handleAgree = () => {
-    const userId = user?.['Email Address']?.toLowerCase().trim();
+    const uid = user?.['Email Address']?.toLowerCase().trim();
     
-    // Check if user has already agreed - don't increment if same ID
-    if (userId) {
+    // Check if user has already agreed using UID system
+    if (uid && hasUserResponded(uid)) {
+      if (onYes) onYes();
+      return;
+    }
+    
+    // Save response using UID system
+    if (uid) {
+      saveUserResponse(uid, true);
+    }
+    
+    // Legacy tracking (for backward compatibility)
+    if (uid) {
       const agreedUsers = JSON.parse(localStorage.getItem(AGREED_USERS_KEY) || '[]');
-      
-      // If already agreed, just navigate without incrementing
-      if (agreedUsers.includes(userId)) {
-        if (onYes) onYes();
-        return;
+      if (!agreedUsers.includes(uid)) {
+        agreedUsers.push(uid);
+        localStorage.setItem(AGREED_USERS_KEY, JSON.stringify(agreedUsers));
       }
-      
-      // Record this user as agreed
-      agreedUsers.push(userId);
-      localStorage.setItem(AGREED_USERS_KEY, JSON.stringify(agreedUsers));
     }
     
     // Increment count only for new unique users
@@ -79,6 +90,11 @@ function MassBunkPage({ user, collegeCount, onYes, onNo }) {
   };
 
   const handleDisagree = () => {
+    // Save disagree response using UID system
+    const uid = user?.['Email Address']?.toLowerCase().trim();
+    if (uid) {
+      saveUserResponse(uid, false);
+    }
     setShowWarning(true);
     if (onNo) onNo();
   };
