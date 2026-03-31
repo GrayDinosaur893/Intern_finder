@@ -1,0 +1,440 @@
+{
+  "ug_internships_2026": {
+    "web_development": [
+      {
+        "id": "UG-WEB-01",
+        "provider": "Google STEP (1st/2nd Year)",
+        "link": "https://www.google.com/about/careers/applications/jobs/results/",
+        "deadline": "March 31, 2026 (Apply Now!)"
+      },
+      {
+        "id": "UG-WEB-02",
+        "provider": "Outreachy (Open Source)",
+        "link": "https://www.outreachy.org/apply/",
+        "duration": "3 Months",
+        "type": "Remote"
+      },
+      {
+        "id": "UG-WEB-03",
+        "provider": "MLH Fellowship",
+        "link": "https://fellowship.mlh.io/",
+        "duration": "12 Weeks",
+        "type": "Remote"
+      },
+      {
+        "id": "UG-WEB-04",
+        "provider": "DPIIT (Govt of India)",
+        "link": "https://dpiit.gov.in/internship/internship-scheme.php",
+        "deadline": "April 30, 2026"
+      },
+      {
+        "id": "UG-WEB-05",
+        "provider": "Microsoft Explore (1st/2nd Year)",
+        "link": "https://careers.microsoft.com/v2/global/en/exploremicrosoft",
+        "type": "MNC/Corporate"
+      },
+      {
+        "id": "UG-WEB-06",
+        "provider": "Amazon SDE Intern",
+        "link": "https://www.amazon.jobs/en/teams/internships-for-students",
+        "type": "MNC/Paid"
+      },
+      {
+        "id": "UG-WEB-07",
+        "provider": "HashiCorp Internships",
+        "link": "https://www.hashicorp.com/careers/early-career",
+        "type": "Remote/DevOps"
+      },
+      {
+        "id": "UG-WEB-08",
+        "provider": "Unstop (Startups)",
+        "link": "https://unstop.com/internship/web-development-internships",
+        "type": "Aggregator"
+      },
+      {
+        "id": "UG-WEB-09",
+        "provider": "Zomato Internships",
+        "link": "https://www.zomato.com/careers",
+        "type": "Corporate"
+      },
+      {
+        "id": "UG-WEB-10",
+        "provider": "Swiggy (Early Career)",
+        "link": "https://www.swiggy.com/careers",
+        "type": "Corporate"
+      }
+    ],
+    "cyber_security": [
+      {
+        "id": "UG-CYB-01",
+        "provider": "CERT-In (National Security)",
+        "link": "https://www.cert-in.org.in/",
+        "type": "Govt/India"
+      },
+      {
+        "id": "UG-CYB-02",
+        "provider": "Palo Alto Networks",
+        "link": "https://www.paloaltonetworks.com/about-us/careers",
+        "type": "Global/MNC"
+      },
+      {
+        "id": "UG-CYB-03",
+        "provider": "Quick Heal Academy",
+        "link": "https://www.quickheal.co.in/careers",
+        "type": "Specialized"
+      },
+      {
+        "id": "UG-CYB-04",
+        "provider": "CrowdStrike University",
+        "link": "https://www.crowdstrike.com/careers/university-interns/",
+        "type": "Remote/Paid"
+      },
+      {
+        "id": "UG-CYB-05",
+        "provider": "Sophos Security",
+        "link": "https://www.sophos.com/en-us/company/careers",
+        "type": "MNC"
+      },
+      {
+        "id": "UG-CYB-06",
+        "provider": "Fortinet Cyber Intern",
+        "link": "https://www.fortinet.com/corporate/about-us/careers",
+        "type": "Global"
+      },
+      {
+        "id": "UG-CYB-07",
+        "provider": "FireEye (Trellix)",
+        "link": "https://www.trellix.com/en-us/about/careers.html",
+        "type": "Corporate"
+      },
+      {
+        "id": "UG-CYB-08",
+        "provider": "National Cyber Security Center",
+        "link": "https://www.ncsc.gov.uk/information/ncsc-internship-schemes",
+        "type": "International/Govt"
+      },
+      {
+        "id": "UG-CYB-09",
+        "provider": "Splunk University",
+        "link": "https://www.splunk.com/en_us/about-splunk/careers/students.html",
+        "type": "MNC"
+      },
+      {
+        "id": "UG-CYB-10",
+        "provider": "AICTE Cyber Internship",
+        "link": "https://internship.aicte-india.org/",
+        "type": "Govt Aggregator"
+      }
+    ],
+    "game_development": [
+      {
+        "id": "UG-GAM-01",
+        "provider": "Epic Games (Unreal Engine)",
+        "link": "https://www.epicgames.com/site/en-US/careers",
+        "type": "Global/MNC"
+      },
+      {
+        "id": "UG-GAM-02",
+        "provider": "Ubisoft (Pune/Mumbai)",
+        "link": "https://pune.ubisoft.com/careers/",
+        "type": "Paid/MNC"
+      },
+      {
+        "id": "UG-GAM-03",
+        "provider": "Rockstar Games",
+        "link": "https://www.rockstargames.com/careers",
+        "type": "Global"
+      },
+      {
+        "id": "UG-GAM-04",
+        "provider": "Riot Games",
+        "link": "https://www.riotgames.com/en/work-with-us/university-programs",
+        "type": "Global/Remote"
+      },
+      {
+        "id": "UG-GAM-05",
+        "provider": "Unity Technologies",
+        "link": "https://careers.unity.com/students",
+        "type": "MNC"
+      },
+      {
+        "id": "UG-GAM-06",
+        "provider": "Electronic Arts (EA)",
+        "link": "https://www.ea.com/careers/students",
+        "type": "MNC"
+      },
+      {
+        "id": "UG-GAM-07",
+        "provider": "Supercell Internships",
+        "link": "https://supercell.com/en/careers/",
+        "type": "Global"
+      },
+      {
+        "id": "UG-GAM-08",
+        "provider": "WinZO (Games Portfolio)",
+        "link": "https://www.winzogames.com/careers",
+        "type": "Corporate/Delhi"
+      },
+      {
+        "id": "UG-GAM-09",
+        "provider": "Lakshya Digital",
+        "link": "https://www.lakshya.com/careers/",
+        "type": "Art/Dev"
+      },
+      {
+        "id": "UG-GAM-10",
+        "provider": "Nvidia (Game Tech)",
+        "link": "https://www.nvidia.com/en-us/about-nvidia/careers/university-recruiting/",
+        "type": "Hardware/Software"
+      }
+    ],
+    "app_development": [
+      {
+        "id": "UG-APP-01",
+        "provider": "Apple (Undergrad)",
+        "link": "https://www.apple.com/careers/in/students.html",
+        "type": "MNC/Corporate"
+      },
+      {
+        "id": "UG-APP-02",
+        "provider": "Bhashini (Govt of India)",
+        "link": "https://dic.gov.in/jobs/announcement-of-internship-programme-dibd/",
+        "type": "Govt AI/App"
+      },
+      {
+        "id": "UG-APP-03",
+        "provider": "Flipkart Runaway",
+        "link": "https://www.flipkartcareers.com/",
+        "type": "Corporate"
+      },
+      {
+        "id": "UG-APP-04",
+        "provider": "Uber University",
+        "link": "https://www.uber.com/us/en/careers/university/",
+        "type": "MNC"
+      },
+      {
+        "id": "UG-APP-05",
+        "provider": "Cisco Meraki (Mobile)",
+        "link": "https://www.cisco.com/c/en/us/about/careers/working-at-cisco/students-and-new-graduate-programs.html",
+        "type": "MNC"
+      },
+      {
+        "id": "UG-APP-06",
+        "provider": "Zomato Mobile Dev",
+        "link": "https://www.zomato.com/careers",
+        "type": "Corporate"
+      },
+      {
+        "id": "UG-APP-07",
+        "provider": "Ola Electric (App)",
+        "link": "https://www.olaelectric.com/careers",
+        "type": "Corporate/EV"
+      },
+      {
+        "id": "UG-APP-08",
+        "provider": "Razorpay Interns",
+        "link": "https://razorpay.com/jobs/",
+        "type": "Fintech"
+      },
+      {
+        "id": "UG-APP-09",
+        "provider": "PhonePe (Mobile)",
+        "link": "https://www.phonepe.com/careers/",
+        "type": "Fintech"
+      },
+      {
+        "id": "UG-APP-10",
+        "provider": "Indeed (App Team)",
+        "link": "https://www.indeed.jobs/students/",
+        "type": "Global"
+      }
+    ],
+    "mechanical_core": [
+      {
+        "id": "UG-MEC-01",
+        "provider": "DRDO (Undergrad)",
+        "link": "https://www.drdo.gov.in/",
+        "type": "Govt/Research"
+      },
+      {
+        "id": "UG-MEC-02",
+        "provider": "Tata Motors",
+        "link": "https://www.tatamotors.com/careers/",
+        "type": "Corporate/Auto"
+      },
+      {
+        "id": "UG-MEC-03",
+        "provider": "L&T (Larsen & Toubro)",
+        "link": "https://www.larsentoubro.com/corporate/careers/",
+        "type": "Core/Heavy"
+      },
+      {
+        "id": "UG-MEC-04",
+        "provider": "Mahindra & Mahindra",
+        "link": "https://www.mahindra.com/careers",
+        "type": "Corporate/Auto"
+      },
+      {
+        "id": "UG-MEC-05",
+        "provider": "Tesla (Global Intern)",
+        "link": "https://www.tesla.com/careers/internships",
+        "type": "EV/Global"
+      },
+      {
+        "id": "UG-MEC-06",
+        "provider": "CITD Tool Design",
+        "link": "https://www.citd.in/",
+        "type": "Govt/Technical"
+      },
+      {
+        "id": "UG-MEC-07",
+        "provider": "Bosch India",
+        "link": "https://www.bosch.in/careers/",
+        "type": "MNC/Core"
+      },
+      {
+        "id": "UG-MEC-08",
+        "provider": "GE Aerospace",
+        "link": "https://jobs.gecareers.com/aviation/global/en",
+        "type": "MNC"
+      },
+      {
+        "id": "UG-MEC-09",
+        "provider": "Rolls-Royce",
+        "link": "https://careers.rolls-royce.com/united-kingdom/students-and-graduates/",
+        "type": "Global/Aero"
+      },
+      {
+        "id": "UG-MEC-10",
+        "provider": "Maruti Suzuki",
+        "link": "https://www.marutisuzuki.com/corporate/careers",
+        "type": "Corporate/Auto"
+      }
+    ],
+    "electrical_core": [
+      {
+        "id": "UG-ELE-01",
+        "provider": "Qualcomm (Hardware)",
+        "link": "https://www.qualcomm.com/company/careers/internships-and-early-in-career-opportunities/india",
+        "type": "MNC/Semi"
+      },
+      {
+        "id": "UG-ELE-02",
+        "provider": "Boeing Electrical",
+        "link": "https://jobs.boeing.com/electrical-engineering-internships",
+        "type": "MNC/Aero"
+      },
+      {
+        "id": "UG-ELE-03",
+        "provider": "NPTI (Power Sector)",
+        "link": "https://npti.gov.in/",
+        "type": "Govt/Training"
+      },
+      {
+        "id": "UG-ELE-04",
+        "provider": "Schneider Electric",
+        "link": "https://www.se.com/in/en/about-us/careers/",
+        "type": "MNC"
+      },
+      {
+        "id": "UG-ELE-05",
+        "provider": "Texas Instruments",
+        "link": "https://careers.ti.com/students-and-interns/",
+        "type": "MNC/Semi"
+      },
+      {
+        "id": "UG-ELE-06",
+        "provider": "Intel (Hardware)",
+        "link": "https://jobs.intel.com/en/internships",
+        "type": "MNC"
+      },
+      {
+        "id": "UG-ELE-07",
+        "provider": "Power Grid India",
+        "link": "https://www.powergrid.in/",
+        "type": "Govt"
+      },
+      {
+        "id": "UG-ELE-08",
+        "provider": "Siemens India",
+        "link": "https://new.siemens.com/in/en/company/jobs.html",
+        "type": "MNC"
+      },
+      {
+        "id": "UG-ELE-09",
+        "provider": "BEL (Bharat Elec)",
+        "link": "https://bel-india.in/",
+        "type": "Govt/Defense"
+      },
+      {
+        "id": "UG-ELE-10",
+        "provider": "ABB (Automation)",
+        "link": "https://new.abb.com/careers",
+        "type": "MNC"
+      }
+    ],
+    "business_mgmt": [
+      {
+        "id": "UG-BIZ-01",
+        "provider": "NITI Aayog (UG Track)",
+        "link": "https://workforindia.niti.gov.in/intern/",
+        "deadline": "Apply April 1-10"
+      },
+      {
+        "id": "UG-BIZ-02",
+        "provider": "PwC India (Campus)",
+        "link": "https://www.pwc.in/careers.html",
+        "type": "Consulting"
+      },
+      {
+        "id": "UG-BIZ-03",
+        "provider": "Goldman Sachs (UG)",
+        "link": "https://www.goldmansachs.com/careers/students/",
+        "type": "Finance"
+      },
+      {
+        "id": "UG-BIZ-04",
+        "provider": "DPIIT (Management)",
+        "link": "https://dpiit.gov.in/internship/internship-scheme.php",
+        "type": "Govt/Policy"
+      },
+      {
+        "id": "UG-BIZ-05",
+        "provider": "Nestle Nesternship",
+        "link": "https://www.nestle.in/jobs/students-graduates",
+        "type": "FMCG"
+      },
+      {
+        "id": "UG-BIZ-06",
+        "provider": "Morgan Stanley (UG)",
+        "link": "https://www.morganstanley.com/about-us/careers",
+        "type": "Finance"
+      },
+      {
+        "id": "UG-BIZ-07",
+        "provider": "McKinsey Forward",
+        "link": "https://www.mckinsey.com/forward",
+        "type": "Skills/Online"
+      },
+      {
+        "id": "UG-BIZ-08",
+        "provider": "HUL (Hindustan Unilever)",
+        "link": "https://www.hul.co.in/careers/",
+        "type": "FMCG"
+      },
+      {
+        "id": "UG-BIZ-09",
+        "provider": "J.P. Morgan (UG)",
+        "link": "https://careers.jpmorgan.com/global/en/students",
+        "type": "Finance"
+      },
+      {
+        "id": "UG-BIZ-10",
+        "provider": "ITC Limited",
+        "link": "https://www.itcportal.com/careers/",
+        "type": "Corporate"
+      }
+    ]
+  }
+}
