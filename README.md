@@ -194,4 +194,4 @@ For support, questions, or feature requests:
 
 **Vortex Active** - Where opportunities meet ambition. 🌟
 
-**Live Demo**: [https://intern_finder.vercel.app](https://intern_finder.vercel.app)
+**Live Demo**: [https://intern-finder.vercel.app](https://intern_finder.vercel.app)
