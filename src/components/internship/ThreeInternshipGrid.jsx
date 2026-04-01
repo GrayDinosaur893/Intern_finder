@@ -32,9 +32,15 @@ function InternshipCard({ internship, user }) {
   const { company, role } = parseProvider(internship.provider);
   const color = CATEGORY_COLORS[internship.category] || '#6366f1';
   
-  // Check skill match - only based on Skills and Expertise field
-  const matchResult = user ? checkInternshipMatch(internship.category, user['Skills and Expertise'] || '') : null;
-  const isSkillMatch = matchResult?.isMatch;
+  // Check both preferred domains and skill matches
+  const matchResult = user ? checkInternshipMatch(
+    internship.category, 
+    user['Skills and Expertise'] || '', 
+    user['Preferred Domain(s) for Internship'] || ''
+  ) : null;
+  
+  const isPreferred = matchResult?.isMatch && matchResult.priority === 'preferred';
+  const isSkillMatch = matchResult?.isMatch && matchResult.priority === 'skill_match';
 
   const handleClick = () => {
     if (internship.link) {
@@ -49,7 +55,7 @@ function InternshipCard({ internship, user }) {
         background: 'rgba(15, 15, 26, 0.9)',
         backdropFilter: 'blur(10px)',
         borderRadius: '16px',
-        border: `1px solid ${isSkillMatch ? '#10b981' : `${color}40`}`,
+        border: `1px solid ${isPreferred ? '#8b5cf6' : isSkillMatch ? '#10b981' : `${color}40`}`,
         padding: '20px',
         cursor: internship.link ? 'pointer' : 'default',
         transition: 'all 0.3s ease',
@@ -60,13 +66,13 @@ function InternshipCard({ internship, user }) {
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = 'translateY(-4px)';
-        e.currentTarget.style.boxShadow = `0 8px 25px ${isSkillMatch ? '#10b98130' : `${color}30`}`;
-        e.currentTarget.style.borderColor = isSkillMatch ? '#10b981' : color;
+        e.currentTarget.style.boxShadow = `0 8px 25px ${isPreferred ? '#8b5cf630' : isSkillMatch ? '#10b98130' : `${color}30`}`;
+        e.currentTarget.style.borderColor = isPreferred ? '#8b5cf6' : isSkillMatch ? '#10b981' : color;
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = 'translateY(0)';
         e.currentTarget.style.boxShadow = 'none';
-        e.currentTarget.style.borderColor = isSkillMatch ? '#10b98160' : `${color}40`;
+        e.currentTarget.style.borderColor = isPreferred ? '#8b5cf660' : isSkillMatch ? '#10b98160' : `${color}40`;
       }}
     >
       {/* Header with company and category indicator */}
@@ -82,22 +88,42 @@ function InternshipCard({ internship, user }) {
           }}>
             {company}
           </h3>
-          {/* Skill Match Badge */}
+          {/* Badges */}
           {matchResult?.isMatch && (
-            <span style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '4px',
-              padding: '2px 8px',
-              borderRadius: '12px',
-              fontSize: '11px',
-              fontWeight: '600',
-              background: 'rgba(16, 185, 129, 0.2)',
-              color: '#10b981',
-              border: '1px solid rgba(16, 185, 129, 0.4)',
-            }} title={`Matches your skills: ${matchResult.matchedSkills.join(', ')}`}>
-              ✓ Matches Your Skills
-            </span>
+            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+              {isPreferred && (
+                <span style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  padding: '2px 8px',
+                  borderRadius: '12px',
+                  fontSize: '11px',
+                  fontWeight: '600',
+                  background: 'rgba(139, 92, 246, 0.2)',
+                  color: '#a78bfa',
+                  border: '1px solid rgba(139, 92, 246, 0.4)',
+                }}>
+                  ★ Preferred
+                </span>
+              )}
+              {isSkillMatch && (
+                <span style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  padding: '2px 8px',
+                  borderRadius: '12px',
+                  fontSize: '11px',
+                  fontWeight: '600',
+                  background: 'rgba(16, 185, 129, 0.2)',
+                  color: '#10b981',
+                  border: '1px solid rgba(16, 185, 129, 0.4)',
+                }} title={`Matches your skills: ${matchResult.matchedSkills.join(', ')}`}>
+                  ✓ Matches Skills
+                </span>
+              )}
+            </div>
           )}
         </div>
         {/* Category indicator dot */}

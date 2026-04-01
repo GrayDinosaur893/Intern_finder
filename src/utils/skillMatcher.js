@@ -190,7 +190,6 @@ export function parsePreferredDomains(domainsString) {
 
 /**
  * Match user skills to internship domains
- * Only uses Skills and Expertise field - ignores Preferred Domains
  * @param {string} userSkills - User's skills string from "Skills and Expertise" field
  * @returns {Object} Object with matched domains and their matching skills
  */
@@ -220,21 +219,56 @@ export function matchSkillsToDomains(userSkills) {
 }
 
 /**
- * Check if an internship category matches user's skills
- * Only uses Skills and Expertise field from Google Forms
+ * Check if an internship category matches user's preferred domains
+ * @param {string} category - Internship category
+ * @param {string} preferredDomains - User's preferred domains string
+ * @returns {boolean} True if category matches preferred domains
+ */
+export function checkPreferredMatch(category, preferredDomains) {
+  if (!preferredDomains || typeof preferredDomains !== 'string') return false;
+  
+  const domains = parsePreferredDomains(preferredDomains);
+  
+  for (const domain of domains) {
+    const normalized = normalizeDomainName(domain);
+    if (normalized === category) {
+      return true;
+    }
+  }
+  
+  return false;
+}
+
+/**
+ * Check if an internship category matches user's skills or preferred domains
  * @param {string} category - Internship category
  * @param {string} userSkills - User's skills string from "Skills and Expertise" field
+ * @param {string} preferredDomains - User's preferred domains string
  * @returns {Object} Match result with isMatch, priority, and matchedSkills
  */
-export function checkInternshipMatch(category, userSkills) {
-  const { domainMatches, matchedSkills } = matchSkillsToDomains(userSkills);
+export function checkInternshipMatch(category, userSkills, preferredDomains) {
+  // First check preferred domains (higher priority)
+  const isPreferred = checkPreferredMatch(category, preferredDomains);
   
+  if (isPreferred) {
+    return {
+      isMatch: true,
+      priority: 'preferred',
+      score: 100,
+      matchedSkills: ['Preferred Domain'],
+      displayName: DOMAIN_DISPLAY_NAMES[category] || category,
+      emoji: DOMAIN_EMOJIS[category] || '💼',
+    };
+  }
+  
+  // Then check skills
+  const { domainMatches, matchedSkills } = matchSkillsToDomains(userSkills);
   const match = domainMatches[category];
   
   if (match) {
     return {
       isMatch: true,
-      priority: match.priority,
+      priority: 'skill_match',
       score: match.score,
       matchedSkills: matchedSkills[category] || [],
       displayName: DOMAIN_DISPLAY_NAMES[category] || category,
