@@ -45,21 +45,20 @@ function SearchBar({ onSearch, onFilterChange, filters, categories, selectedCate
       <div className="search-glass-panel">
         {/* Search Input */}
         <form onSubmit={handleSearch} className="search-input-wrapper">
-          <div className="search-icon">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx="11" cy="11" r="8" />
-              <path d="m21 21-4.3-4.3" />
-            </svg>
-          </div>
+          <svg
+            className="search-icon"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
           <input
             type="text"
             placeholder="Search by company, role, or tech..."

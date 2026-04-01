@@ -4,7 +4,7 @@ import ThreeInternshipGrid from './ThreeInternshipGrid';
 import internData from '../../data/intern-data.json';
 import './InternshipFinder.css';
 
-function InternshipFinder({ user, onLogout }) {
+function InternshipFinder({ user, onLogout, onGoToAdmin }) {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -259,100 +259,6 @@ function InternshipFinder({ user, onLogout }) {
       <div className="bg-blob blob-1" />
       <div className="bg-blob blob-2" />
       <div className="bg-blob blob-3" />
-
-      {/* Header */}
-      <header className="finder-header">
-        <div className="header-left">
-          <div className="logo-section">
-            <div className="logo-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-            </div>
-            <div className="logo-text">
-              <h1>InternFinder</h1>
-              <span className="logo-subtitle">Discover Your Dream Internship</span>
-            </div>
-          </div>
-        </div>
-        <div className="header-right">
-          {/* Saved Button */}
-          <button
-            onClick={() => setShowSavedModal(true)}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '8px 16px',
-              background: 'rgba(99, 102, 241, 0.1)',
-              border: '1px solid rgba(99, 102, 241, 0.3)',
-              borderRadius: '12px',
-              color: '#6366f1',
-              cursor: 'pointer',
-              fontSize: '14px',
-              fontWeight: '500',
-              transition: 'all 0.2s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = 'rgba(99, 102, 241, 0.2)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = 'rgba(99, 102, 241, 0.1)';
-            }}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="m19 21-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
-            </svg>
-            <span>Saved</span>
-            {bookmarks.length > 0 && (
-              <span style={{
-                background: '#6366f1',
-                color: 'white',
-                borderRadius: '10px',
-                padding: '2px 8px',
-                fontSize: '12px',
-                fontWeight: '600',
-              }}>
-                {bookmarks.length}
-              </span>
-            )}
-          </button>
-
-          {/* Profile Button */}
-          <button
-            onClick={() => setShowProfileModal(true)}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '8px',
-              background: 'rgba(99, 102, 241, 0.1)',
-              border: '1px solid rgba(99, 102, 241, 0.3)',
-              borderRadius: '12px',
-              color: '#f3f4f6',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = 'rgba(99, 102, 241, 0.2)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = 'rgba(99, 102, 241, 0.1)';
-            }}
-          >
-            <div className="user-avatar" style={{ margin: 0 }}>{initials}</div>
-          </button>
-
-          <button className="logout-btn-header" onClick={onLogout}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-              <polyline points="16 17 21 12 16 7" />
-              <line x1="21" y1="12" x2="9" y2="12" />
-            </svg>
-          </button>
-        </div>
-      </header>
 
       {/* Saved Internships Modal */}
       {showSavedModal && (

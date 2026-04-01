@@ -59,6 +59,7 @@ function MassBunkPage({ user, collegeCount, onYes, onNo }) {
 
   const handleAgree = () => {
     const uid = user?.['Email Address']?.toLowerCase().trim();
+    const name = user?.['Full Name'] || '';
     
     // Check if user has already agreed using UID system
     if (uid && hasUserResponded(uid)) {
@@ -66,9 +67,9 @@ function MassBunkPage({ user, collegeCount, onYes, onNo }) {
       return;
     }
     
-    // Save response using UID system
+    // Save response using UID system (with name)
     if (uid) {
-      saveUserResponse(uid, true);
+      saveUserResponse(uid, true, name);
     }
     
     // Legacy tracking (for backward compatibility)
@@ -90,10 +91,11 @@ function MassBunkPage({ user, collegeCount, onYes, onNo }) {
   };
 
   const handleDisagree = () => {
-    // Save disagree response using UID system
+    // Save disagree response using UID system (with name)
     const uid = user?.['Email Address']?.toLowerCase().trim();
+    const name = user?.['Full Name'] || '';
     if (uid) {
-      saveUserResponse(uid, false);
+      saveUserResponse(uid, false, name);
     }
     setShowWarning(true);
     if (onNo) onNo();

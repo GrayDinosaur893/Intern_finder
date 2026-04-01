@@ -7,6 +7,7 @@ import MassBunkPage from './components/MassBunkPage';
 import NotReadyPage from './components/NotReadyPage';
 import InternshipFinder from './components/internship/InternshipFinder';
 import AdminDashboard from './components/AdminDashboard';
+import Navbar from './components/Navbar';
 import { isBITBhilai, extractCollege } from './utils/detectCollege';
 import { recordLogin, getCollegeCount } from './utils/collegeTracker';
 import './App.css';
@@ -47,13 +48,14 @@ const getUserResponse = (uid) => {
   return stored ? JSON.parse(stored) : null;
 };
 
-// Helper: Save user response
-export const saveUserResponse = (uid, agreed) => {
+// Helper: Save user response (with optional name)
+export const saveUserResponse = (uid, agreed, name) => {
   if (!uid) return;
   localStorage.setItem(`vortex_status_${uid}`, JSON.stringify({
     agreed,
     timestamp: Date.now(),
-    uid
+    uid,
+    name: name || ''
   }));
 };
 
@@ -240,7 +242,7 @@ function App() {
     );
   } else if (screen === 'internships') {
     mainContent = (
-      <InternshipFinder user={user} onLogout={handleLogout} />
+      <InternshipFinder user={user} onLogout={handleLogout} onGoToAdmin={() => setScreen('admin')} />
     );
   } else if (screen === 'admin') {
     mainContent = (
@@ -248,10 +250,24 @@ function App() {
     );
   }
 
+  // Show navbar on all screens except login
+  const showNavbar = screen !== 'login';
+
   return (
     <div className="app">
       {/* 3D Student City Background */}
       <StudentCity />
+
+      {/* Navbar */}
+      {showNavbar && (
+        <Navbar
+          user={user}
+          isAdmin={isAdmin}
+          screen={screen}
+          onNavigate={setScreen}
+          onLogout={handleLogout}
+        />
+      )}
 
       {/* Dynamic Screen Routing */}
       {mainContent}
