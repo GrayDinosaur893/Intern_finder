@@ -6,6 +6,14 @@
 
 Vortex Active is a modern, responsive web application designed to help students discover and explore internship opportunities across various domains. Built with cutting-edge React technology and featuring a sleek dark-themed interface with neon accents, Vortex Active provides an intuitive platform for students to find their perfect internship match.
 
+## ⚠️ Important Notice
+
+> **If you haven't filled out the form, your details won't be recorded.**
+>
+> Please make sure to submit your information via the Google Form to ensure your data is available in the system.
+>
+> 🔗 **Fill out the form here:** [https://docs.google.com/forms/d/e/1FAIpQLSftoxmfbdSaJXst2gpUCYTxGHYrxFC7zFGS9bgZVLRYCBPXhA/viewform?usp=dialog](https://docs.google.com/forms/d/e/1FAIpQLSftoxmfbdSaJXst2gpUCYTxGHYrxFC7zFGS9bgZVLRYCBPXhA/viewform?usp=dialog)
+
 ## 🚀 Features
 
 ### Core Functionality

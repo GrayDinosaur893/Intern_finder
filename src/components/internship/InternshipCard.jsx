@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect, useCallback, memo } from 'react';
 import CardBackgroundEffect from './CardBackgroundEffect';
+import { checkInternshipMatch } from '../../utils/skillMatcher';
 
-const InternshipCard = memo(function InternshipCard({ internship, category, isBookmarked, onBookmarkToggle }) {
+const InternshipCard = memo(function InternshipCard({ internship, category, isBookmarked, onBookmarkToggle, user }) {
   const [isHovered, setIsHovered] = useState(false);
   const [tiltStyle, setTiltStyle] = useState({});
   const [lightPosition, setLightPosition] = useState({ x: 50, y: 50 });
@@ -122,6 +123,22 @@ const InternshipCard = memo(function InternshipCard({ internship, category, isBo
     return emojis[cat] || '💼';
   }, []);
 
+  // Check skill match with user profile
+  const matchResult = useCallback(() => {
+    if (!user) return null;
+    const userSkills = user['Skills and Expertise'] || '';
+    const preferredDomains = user['Preferred Domain(s) for Internship'] || '';
+    return checkInternshipMatch(category, userSkills, preferredDomains);
+  }, [category, user]);
+
+  const result = matchResult();
+
+  // Determine if card has a match for border styling
+  const getMatchClassName = () => {
+    if (!result || !result.isMatch) return '';
+    return result.priority === 'preferred' ? 'matched-preferred' : 'matched-skill';
+  };
+
   // Button click handler with press effect
   const handleButtonClick = useCallback((e) => {
     const button = e.currentTarget;
@@ -134,7 +151,7 @@ const InternshipCard = memo(function InternshipCard({ internship, category, isBo
   return (
     <div
       ref={cardRef}
-      className={`internship-card-3d ${isHovered ? 'hovered' : ''} ${isBookmarked ? 'bookmarked' : ''}`}
+      className={`internship-card-3d ${isHovered ? 'hovered' : ''} ${isBookmarked ? 'bookmarked' : ''} ${getMatchClassName()}`}
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -165,9 +182,32 @@ const InternshipCard = memo(function InternshipCard({ internship, category, isBo
         <div className="card-main-content">
           {/* Header: Category badge + Bookmark */}
           <div className="card-header">
-            <span className="category-badge">
-              {getCategoryEmoji(category)} {category.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}
-            </span>
+            <div className="card-header-left">
+              <span className="category-badge">
+                {getCategoryEmoji(category)} {category.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+              </span>
+              {result && result.isMatch && (
+                <span className={`preference-badge ${result.priority === 'preferred' ? 'preferred' : 'skill-match'}`}
+                    title={`Matches your ${result.priority === 'preferred' ? 'preferred domain' : 'skills'}: ${result.matchedSkills.join(', ')}`}>
+                  {result.priority === 'preferred' ? (
+                    <>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                      </svg>
+                      Preferred
+                    </>
+                  ) : (
+                    <>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                      </svg>
+                      Skill Match
+                    </>
+                  )}
+                </span>
+              )}
+            </div>
             <button
               className={`bookmark-btn ${isBookmarked ? 'active' : ''}`}
               onClick={(e) => {

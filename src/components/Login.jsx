@@ -187,6 +187,34 @@ function Login({ onLogin, onSuccess, dataLoading, dataError }) {
           </button>
         </form>
 
+        <div className="login-notice">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="8" x2="12" y2="12" />
+            <line x1="12" y1="16" x2="12.01" y2="16" />
+          </svg>
+          <span>
+            <strong>Important:</strong> If you haven't filled out the form, your details won't be recorded.{' '}
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSftoxmfbdSaJXst2gpUCYTxGHYrxFC7zFGS9bgZVLRYCBPXhA/viewform?usp=dialog"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="login-notice-link"
+            >
+              Fill out the form here
+            </a>
+          </span>
+        </div>
+
         <p className="login-footer">
           Your data is fetched from a Google Sheet. No passwords stored.
         </p>
@@ -254,6 +282,31 @@ function Login({ onLogin, onSuccess, dataLoading, dataError }) {
           border-radius: 50% !important;
           box-shadow: 0 0 20px rgba(0, 200, 255, 0.2) !important;
           color: rgba(0, 210, 255, 0.9) !important;
+        }
+        .login-notice {
+          background: rgba(255, 165, 0, 0.1) !important;
+          border: 1px solid rgba(255, 165, 0, 0.3) !important;
+          border-radius: 10px !important;
+          padding: 12px 16px !important;
+          margin-bottom: 16px !important;
+          display: flex !important;
+          align-items: flex-start !important;
+          gap: 10px !important;
+          color: rgba(255, 200, 100, 0.9) !important;
+          font-size: 13px !important;
+          line-height: 1.5 !important;
+        }
+        .login-notice svg {
+          flex-shrink: 0 !important;
+          margin-top: 2px !important;
+        }
+        .login-notice-link {
+          color: rgba(0, 220, 255, 0.9) !important;
+          text-decoration: underline !important;
+          font-weight: 600 !important;
+        }
+        .login-notice-link:hover {
+          color: rgba(0, 255, 255, 1) !important;
         }
         .login-footer {
           color: rgba(100, 160, 210, 0.5) !important;

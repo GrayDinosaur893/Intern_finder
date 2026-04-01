@@ -645,7 +645,7 @@ function InternshipFinder({ user, onLogout, onGoToAdmin }) {
             {/* Three.js Internship Grid */}
             <ThreeInternshipGrid 
               internships={visibleInternships}
-              onCardClick={handleCardClick}
+              user={user}
             />
 
             {/* Load More Button */}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { checkInternshipMatch } from '../../utils/skillMatcher';
 
 // Category to color mapping
 const CATEGORY_COLORS = {
@@ -27,9 +28,13 @@ const parseProvider = (str) => {
 };
 
 // Individual Card Component
-function InternshipCard({ internship }) {
+function InternshipCard({ internship, user }) {
   const { company, role } = parseProvider(internship.provider);
   const color = CATEGORY_COLORS[internship.category] || '#6366f1';
+  
+  // Check skill match - only based on Skills and Expertise field
+  const matchResult = user ? checkInternshipMatch(internship.category, user['Skills and Expertise'] || '') : null;
+  const isSkillMatch = matchResult?.isMatch;
 
   const handleClick = () => {
     if (internship.link) {
@@ -44,7 +49,7 @@ function InternshipCard({ internship }) {
         background: 'rgba(15, 15, 26, 0.9)',
         backdropFilter: 'blur(10px)',
         borderRadius: '16px',
-        border: `1px solid ${color}40`,
+        border: `1px solid ${isSkillMatch ? '#10b981' : `${color}40`}`,
         padding: '20px',
         cursor: internship.link ? 'pointer' : 'default',
         transition: 'all 0.3s ease',
@@ -55,18 +60,18 @@ function InternshipCard({ internship }) {
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = 'translateY(-4px)';
-        e.currentTarget.style.boxShadow = `0 8px 25px ${color}30`;
-        e.currentTarget.style.borderColor = color;
+        e.currentTarget.style.boxShadow = `0 8px 25px ${isSkillMatch ? '#10b98130' : `${color}30`}`;
+        e.currentTarget.style.borderColor = isSkillMatch ? '#10b981' : color;
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = 'translateY(0)';
         e.currentTarget.style.boxShadow = 'none';
-        e.currentTarget.style.borderColor = `${color}40`;
+        e.currentTarget.style.borderColor = isSkillMatch ? '#10b98160' : `${color}40`;
       }}
     >
       {/* Header with company and category indicator */}
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '8px' }}>
-        <div style={{ flex: 1 }}>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <h3 style={{
             fontSize: '16px',
             fontWeight: '600',
@@ -77,6 +82,23 @@ function InternshipCard({ internship }) {
           }}>
             {company}
           </h3>
+          {/* Skill Match Badge */}
+          {matchResult?.isMatch && (
+            <span style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '4px',
+              padding: '2px 8px',
+              borderRadius: '12px',
+              fontSize: '11px',
+              fontWeight: '600',
+              background: 'rgba(16, 185, 129, 0.2)',
+              color: '#10b981',
+              border: '1px solid rgba(16, 185, 129, 0.4)',
+            }} title={`Matches your skills: ${matchResult.matchedSkills.join(', ')}`}>
+              ✓ Matches Your Skills
+            </span>
+          )}
         </div>
         {/* Category indicator dot */}
         <div style={{
@@ -145,7 +167,7 @@ function InternshipCard({ internship }) {
 }
 
 // Main export component
-export default function ThreeInternshipGrid({ internships }) {
+export default function ThreeInternshipGrid({ internships, user }) {
   const [isSupported, setIsSupported] = useState(true);
 
   // Check for basic browser support
@@ -199,6 +221,7 @@ export default function ThreeInternshipGrid({ internships }) {
           <InternshipCard
             key={internship.id}
             internship={internship}
+            user={user}
           />
         ))}
       </div>
